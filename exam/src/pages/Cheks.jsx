@@ -1,7 +1,10 @@
 import React from 'react'
+import Chek from '../components/Chek'
 
 export default function Cheks() {
   return (
-    <div>Cheks</div>
+    <div>
+      <Chek/>
+    </div>
   )
 }

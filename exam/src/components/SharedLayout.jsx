@@ -5,13 +5,13 @@ import Navbar from './Navbar'
 
 export default function SharedLayout() {
   return (
-    <div className='container mx-auto'>
-     <div className=' rounded-3xl flex'>
+    <div className='container mx-auto overflow-hidden'>
+     <div className=' rounded-3xl flex gap-80'>
        <div>
       <Navbar/>
       </div>
       <main>
-            <Outlet/>
+        <Outlet/>
       </main>
      </div>
        

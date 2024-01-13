@@ -9,6 +9,8 @@ import Cheks from './pages/Cheks'
 import Oplata from './pages/Oplata'
 import Tavar from './pages/Tavar'
 import Error from './pages/Error'
+import Magazine from './pages/magazine'
+import Darkmode from './components/Darkmode'
 
 export default function App() {
   return (
@@ -23,10 +25,14 @@ export default function App() {
       <Route path='/cheks' element={<Cheks/>}/>
       <Route path='/oplata' element={<Oplata/>}/>
       <Route path='/tavar' element={<Tavar/>}/>
+      <Route path='/magazine' element={<Magazine/>}/>
       <Route path='*' element={<Error/>}/>
       
       </Route>
     </Routes>
+    <div className="flex justify-center items-center h-screen">
+      <Darkmode />
+    </div>
    
 
    </>

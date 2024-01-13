@@ -11,8 +11,8 @@ import user from '../assets/images/user.svg'
 
 export default function Navbar() {
   return (
-     <div className=' bg-blue-700'>
-         <div className=' w-80 bg-slate-50'>
+     <div className=' relative'>
+         <div className=' w-80 bg-slate-50 fixed '>
               <div className='w-96 p-8'>
                 <img src={logo} />
               </div>
