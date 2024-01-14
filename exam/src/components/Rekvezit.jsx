@@ -1,9 +1,39 @@
 import React from "react";
 import { useCountries } from "use-react-countries";
 import { Select, Option } from "@material-tailwind/react";
+import { useState } from "react";
  
 export function Rekvezit() {
   const { countries } = useCountries();
+  
+  const [bankAccounts, setBankAccounts] = useState(['', '']);
+
+  const handleChange = (index, value) => {
+    const updatedAccounts = [...bankAccounts];
+    updatedAccounts[index] = value;
+    setBankAccounts(updatedAccounts);
+  };
+
+  const addInput = () => {
+    if(bankAccounts.length<3){
+      setBankAccounts([...bankAccounts, '']);
+    }
+
+  };
+
+  const removeInput = (index) => {
+    if (bankAccounts.length > 2) {
+      const updatedAccounts = [...bankAccounts];
+      updatedAccounts.splice(index, 1);
+      setBankAccounts(updatedAccounts);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('Bank Account Numbers:', bankAccounts);
+  };
  
   return (
     <div className=' flex mt-8'>
@@ -60,12 +90,40 @@ export function Rekvezit() {
                  </div>
           </div>   
            <div>
-                    <h1 className='text-zinc-500 mt-8 font-semibold'>Банковский счет</h1>
-                    <div className=" rounded-2xl bg-gray-100 w-[680px] py-2 mt-4 pl-1">
-                        <input type="text" placeholder='Введите банковский счет' className=' px-5 w-[670px] py-2 bg-gray-100' />
-                        <input type="text" placeholder='Название банка и филиал' className=' border-t-2 px-5 w-[670px] py-2  bg-gray-100' />
-                    </div>
-                    <button className=' px-5 w-[680px] py-4 bg-gray-100 rounded-2xl text-gray-500 text-base font-semibold mt-8'>+ Добавить еще один банковский счет</button>
+                    <h1 className='text-zinc-500 mt-8 mb-8 font-semibold'>Банковский счет</h1>
+                       <form onSubmit={handleSubmit} className='w-[655px]'>
+        {bankAccounts.map((account, index) => (
+          <div key={index} className='relative'>
+            <input
+              type="text"
+              className={`border w-[650px] rounded-t-2xl px-4 py-4 bg-slate-100 focus:outline-none placeholder:font-semibold placeholder:text-xl placeholder:text-gray-400`}
+              placeholder='Введите банковский счет'
+              value={account}
+              onChange={(e) => handleChange(index, e.target.value)}
+            />
+            {index >= 2 && (
+              <button
+                type="button"
+                className='absolute top-1/2 right-4 transform -translate-y-1/2 border px-3 py-1 bg-slate-100  rounded-2xl text-blue-500 font-semibold text-xl hover:border-blue-600'
+                onClick={() => removeInput(index)}
+              >
+                <h1 className=" text-red-500">x</h1>
+              </button>
+            )}
+          </div>
+        ))}
+        <button
+          type="button"
+          className='mt-8 w-[650px] px-4 py-4 bg-slate-100 rounded-2xl text-gray-400 font-semibold text-xl hover:border-blue-600 border'
+          onClick={addInput}
+        >
+          + Добавить еще один банковский счет
+        </button>
+        <button type="submit" className='border w-[650px] px-3 py-4 bg-slate-100 mt-4  rounded-2xl text-blue-500 font-semibold text-xl hover:border-blue-600'>
+          Отправить
+        </button>
+      </form>
+                  
           </div>
                  
         </div>

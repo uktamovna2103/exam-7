@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 import setting from '../assets/images/setting.svg'
 import user from '../assets/images/user.svg'
+import { useGlobalContext } from '../Context'
 
 
 
@@ -10,9 +11,11 @@ import user from '../assets/images/user.svg'
 
 
 export default function Navbar() {
+  const {ToggleTheme,theme}=useGlobalContext()
   return (
      <div className=' relative'>
          <div className=' w-80 bg-slate-50 fixed '>
+            
               <div className='w-96 p-8'>
                 <img src={logo} />
               </div>
