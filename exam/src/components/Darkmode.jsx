@@ -1,29 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
+import logo from '../assets/images/logo.svg'
+import { useState } from 'react'
 
-const Darkmode = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDarkMode);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
+export default function Darkmode() {
+  const [darkMode, setDarkMode] =useState(true)
+  function toggleDarkMode(props) {
+        setDarkMode(prevDarkMode => !prevDarkMode)
+    }
   return (
-    <button
-      onClick={toggleDarkMode}
-      className="px-4 py-2 rounded-md bg-gray-800 text-white"
-    >
-      {darkMode ? 'Light Mode' : 'Dark Mode'}
-    </button>
-  );
-};
-
-export default Darkmode;
+   <nav className="grid grid-cols-2 w-full place-content-between items-center">
+            <h4>Resume</h4>
+            <img onClick={props.toggleDarkMode} 
+                 className="self-left justify-self-end" 
+                 src={logo} />
+                 src={props.darkMode ? "./assets/toggle-icon-dark.svg" :  "./assets/toggle-icon-dark.svg"}
+        </nav>
+  )
+}

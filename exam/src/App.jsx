@@ -30,9 +30,7 @@ export default function App() {
       
       </Route>
     </Routes>
-    <div className="flex justify-center items-center h-screen">
-      <Darkmode />
-    </div>
+   
    
 
    </>
