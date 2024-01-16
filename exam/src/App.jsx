@@ -10,20 +10,19 @@ import Oplata from './pages/Oplata'
 import Tavar from './pages/Tavar'
 import Error from './pages/Error'
 import Magazine from './pages/magazine'
-import Darkmode from './components/Darkmode'
-// import { useGlobalContext } from './Context'
-// import { useEffect } from 'react'
+import { useGlobalContext } from './Context'
+import { useEffect } from 'react'
 
 export default function App() {
-//   const { user,list,theme } = useGlobalContext();
-//   useEffect(()=>{
-//   localStorage.setItem('users', JSON.stringify(user))
-//   localStorage.setItem('lists', JSON.stringify(list))
+  const { user,list,theme } = useGlobalContext();
+  useEffect(()=>{
+  localStorage.setItem('users', JSON.stringify(user))
+  localStorage.setItem('lists', JSON.stringify(list))
 
-// },[user,list])
+},[user,list])
   return (
       <>
-   {/* <div className={`${theme==="light" ? "bg-white" : "bg-gray-800"}`}> */}
+   <div className={`${theme==="light" ? "bg-white" : "bg-zinc-800"}`}>
     <Routes>
       <Route path='/' element={<SharedLayout/>}>
       <Route index element={<Home/>}/>
@@ -39,7 +38,7 @@ export default function App() {
       </Route>
     </Routes>
    
-   {/* </div> */}
+   </div>
 
    </>
   )

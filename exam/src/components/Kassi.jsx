@@ -1,20 +1,24 @@
 import React, { useState } from 'react'
 
+import { useGlobalContext } from '../Context'
+
 export default function Kassi() {
     const[enabled,setEnabled]=useState(false);
+
+    const {theme}=useGlobalContext()
  return (
     <div className=' flex container mx-auto'>
       <div className=' w-64'>
-        <h1 className=' text-slate-500 font-semibold text-3xl'>Кассы</h1>
+        <h1 className={` font-semibold text-3xl ${theme==='dark'? 'text-white':'text-slate-500'}`}>Кассы</h1>
       </div>
       <div className=''>
        <hr />
-       <div className=' flex gap-96 py-5 px-3'>
+       <div className={`flex gap-96 py-5 px-3  ${theme==='dark'? 'text-white':'text-black'}`}>
         <h1>Касса</h1>
         <h2>Статус</h2>
        </div>
        <hr />
-        <div className=' flex mt-4 w-[600px]   py-4 px-1 rounded-2xl bg-gray-100'>
+        <div className={` flex mt-4 w-[600px]   py-4 px-1 rounded-2xl ${theme==='dark'? 'bg-zinc-700':'bg-gray-100'}`}>
                     <h1 className=' ml-3 mt-1 text-zinc-500 text-base font-medium'>Cashbox Riviera</h1>
                    
                    
